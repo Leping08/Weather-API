@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Humidity;
+use App\Pressure;
 use App\Temperature;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -20,11 +21,13 @@ class WeatherMeasured implements ShouldBroadcast
 
     public $humidity;
 
+    public $pressure;
 
-    public function __construct(Temperature $temperature, Humidity $humidity)
+    public function __construct(Temperature $temperature, Humidity $humidity, Pressure $pressure)
     {
         $this->humidity = $humidity;
         $this->temperature = $temperature;
+        $this->pressure = $pressure;
     }
 
     /**

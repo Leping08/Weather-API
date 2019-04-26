@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Log;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,13 +18,5 @@ use Illuminate\Support\Facades\Log;
 //    return $request->user();
 //});
 
-Route::middleware('api_token')->group(function () {
-
-    Route::post('/weather/{api_token}', function () {
-        Log::info("Temp: " . request()->temp);
-        Log::info("Humidity: " . request()->humidity);
-        Log::info("Pressure: " . request()->pressure);
-    });
-
-});
+Route::post('/weather/{api_token}', 'WeatherMeasurement@store')->middleware('api_token');
 
