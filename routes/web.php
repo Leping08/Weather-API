@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    \Illuminate\Support\Facades\Log::info("This is a test");
-    return view('welcome');
-});
+Route::get('/', 'WeatherMeasurement@index');

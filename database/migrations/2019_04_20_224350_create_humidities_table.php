@@ -15,7 +15,7 @@ class CreateHumiditiesTable extends Migration
     {
         Schema::create('humidities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('percentage');
+            $table->float('percentage')->nullable();
             $table->timestamps();
         });
     }

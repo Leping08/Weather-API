@@ -18,5 +18,13 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::post('/weather/{api_token}', 'WeatherMeasurement@store')->middleware('api_token');
+Route::middleware('api_token')->group(function () {
+    Route::post('/weather/{api_token}', 'WeatherMeasurement@store');
+});
+
+Route::get('/pressure', 'WeatherMeasurement@pressure');
+
+Route::get('/temperature', 'WeatherMeasurement@temperature');
+
+Route::get('/humidity', 'WeatherMeasurement@humidity');
 

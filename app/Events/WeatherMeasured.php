@@ -37,6 +37,6 @@ class WeatherMeasured implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('weather');
+        return new Channel('weather');
     }
 }

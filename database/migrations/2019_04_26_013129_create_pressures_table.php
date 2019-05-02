@@ -15,7 +15,7 @@ class CreatePressuresTable extends Migration
     {
         Schema::create('pressures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('millibars', 10, 6);
+            $table->decimal('millibars', 10, 6)->nullable();
             $table->dateTime('measurement_time');
             $table->timestamps();
         });
