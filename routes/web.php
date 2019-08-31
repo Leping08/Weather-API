@@ -11,4 +11,8 @@
 |
 */
 
-Route::get('/', 'WeatherMeasurement@index');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function (){
+    return 'It Works!';
+});
