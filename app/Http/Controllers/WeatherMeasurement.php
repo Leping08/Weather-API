@@ -32,8 +32,8 @@ class WeatherMeasurement extends Controller
     public function lastHourOfData(string $table)
     {
         $data = DB::table($table)
-                    ->where('created_at', '>=', Carbon::now()->subMinute(10)->toDateTimeString())
-                    ->get();
+            ->where('created_at', '>=', Carbon::now()->subMinute(10)->toDateTimeString())
+            ->get();
         return $this->downSample($data);
     }
 
@@ -41,13 +41,17 @@ class WeatherMeasurement extends Controller
     {
         $downSamplePercent = 2;
         $count = $collection->count();
-        $nth = ($downSamplePercent * .01) * $count;
-        return $collection->nth(round($nth));
+        if ($count > 100) {
+            $nth = ($downSamplePercent * .01) * $count;
+            return $collection->nth(round($nth));
+        } else {
+            return $collection;
+        }
     }
-    
+
     public function store(Request $request)
     {
-        Log::info("Request: ". print_r($request->all(), true));
+        Log::info("Request: " . print_r($request->all(), true));
 
         $data = $request->validate([
             'temp' => 'nullable|numeric',
@@ -56,7 +60,7 @@ class WeatherMeasurement extends Controller
             'event_time' => 'required'
         ]);
 
-        Log::info("Request: ". print_r($data, true));
+        Log::info("Request: " . print_r($data, true));
 
         $event_time = Carbon::parse($data['event_time']);
 
