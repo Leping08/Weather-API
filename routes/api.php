@@ -22,9 +22,12 @@ Route::middleware('api_token')->group(function () {
     Route::post('/weather/{api_token}', 'WeatherMeasurement@store');
 });
 
+/* @see WeatherMeasurement::pressure() */
 Route::get('/pressure', 'WeatherMeasurement@pressure');
 
+/* @see WeatherMeasurement::temperature() */
 Route::get('/temperature', 'WeatherMeasurement@temperature');
 
+/* @see WeatherMeasurement::humidity() */
 Route::get('/humidity', 'WeatherMeasurement@humidity');
 

@@ -32,14 +32,14 @@ class WeatherMeasurement extends Controller
     public function lastHourOfData(string $table)
     {
         $data = DB::table($table)
-                    ->whereTime('created_at', '>', Carbon::now()->subHour())
+                    ->where('created_at', '>=', Carbon::now()->subMinute(10)->toDateTimeString())
                     ->get();
         return $this->downSample($data);
     }
 
     public function downSample(Collection $collection)
     {
-        $downSamplePercent = 0.5;
+        $downSamplePercent = 2;
         $count = $collection->count();
         $nth = ($downSamplePercent * .01) * $count;
         return $collection->nth(round($nth));
