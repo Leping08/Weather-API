@@ -31,10 +31,13 @@ class WeatherMeasurement extends Controller
 
     public function lastHourOfData(string $table)
     {
-        $data = DB::table($table)
-            ->where('created_at', '>=', Carbon::now()->subMinute(10)->toDateTimeString())
-            ->get();
-        return $this->downSample($data);
+        $data = DB::table($table);
+
+        if (config('api.live')) {
+            $data->where('created_at', '>=', Carbon::now()->subMinutes(10)->toDateTimeString());
+        }
+
+        return $this->downSample($data->get());
     }
 
     public function downSample(Collection $collection)
