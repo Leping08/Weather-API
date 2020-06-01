@@ -12,3 +12,4 @@ yarn-error.log
 .idea/**.vapor/
 .env.production
 .env.staging
+/.idea

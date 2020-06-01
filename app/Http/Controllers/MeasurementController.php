@@ -42,6 +42,6 @@ class MeasurementController extends Controller
             'measurement_time' => $event_time
         ]);
 
-        event(new WeatherMeasured($temperature, $humidity, $pressure));
+        //event(new WeatherMeasured($temperature, $humidity, $pressure));
     }
 }
