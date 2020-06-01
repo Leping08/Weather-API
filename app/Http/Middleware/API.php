@@ -15,7 +15,7 @@ class API
      */
     public function handle($request, Closure $next)
     {
-        if($request->api_token != config('api.key')) {
+        if($request->api_key != config('api.key')) {
             return response()->json('Invalid API Key', 401);
         }
         return $next($request);

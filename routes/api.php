@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* @see WeatherMeasurement::store() */
+/* @see MeasurementController::store() */
 Route::middleware('api_token')->group(function () {
-    Route::post('/weather/{api_token}', 'WeatherMeasurement@store')->name('measurement.store');
+    Route::post('/weather/{api_key}', 'MeasurementController@store')->name('measurement.store');
 });
 
 /* @see LiveDataController::index() */

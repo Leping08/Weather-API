@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class WeatherMeasurement extends Controller
+class MeasurementController extends Controller
 {
     public function store(Request $request)
     {

@@ -23,7 +23,7 @@ class WeatherMeasurementTest extends TestCase
             'event_time' => '2019-05-07 00:54:52.145026'
         ];
 
-        $this->post(route('measurement.store', ['api_token' => config('api.key')]), $data)
+        $this->post(route('measurement.store', ['api_key' => config('api.key')]), $data)
             ->assertStatus(200);
     }
 }
