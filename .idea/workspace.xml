@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8e8700c-699d-46f2-8cee-913dcddbc81d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WeatherMeasurement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MeasurementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/API.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/API.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Api/WeatherMeasurementTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/WeatherMeasurementTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vapor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/vapor.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WeatherMeasurementTest.is_will_save_data_to_the_database_when_the_store_route_is_hit">
+  <component name="RunManager" selected="PHPUnit.tests">
     <configuration name="LiveDataTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\LiveDataTest" file="$PROJECT_DIR$/tests/Api/LiveDataTest.php" scope="Class" />
       <method v="2" />
@@ -204,8 +199,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.WeatherMeasurementTest.is_will_save_data_to_the_database_when_the_store_route_is_hit" />
         <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.WeatherMeasurementTest.is_will_save_data_to_the_database_when_the_store_route_is_hit" />
         <item itemvalue="PHPUnit.WeatherMeasurementTest" />
         <item itemvalue="PHPUnit.WeatherMeasurementTest.is_will_save_data_to_the_database" />
         <item itemvalue="PHPUnit.LiveDataTest" />
@@ -243,7 +238,8 @@
       <workItem from="1590455319336" duration="152000" />
       <workItem from="1590493201678" duration="41000" />
       <workItem from="1590493264983" duration="2058000" />
-      <workItem from="1590966844472" duration="5125000" />
+      <workItem from="1590966844472" duration="6701000" />
+      <workItem from="1591030293253" duration="224000" />
     </task>
     <servers />
   </component>
