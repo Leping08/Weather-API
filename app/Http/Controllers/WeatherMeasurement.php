@@ -8,50 +8,10 @@ use App\Pressure;
 use App\Temperature;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class WeatherMeasurement extends Controller
 {
-    public function temperature()
-    {
-        return $this->lastHourOfData('temperatures');
-    }
-
-    public function pressure()
-    {
-        return $this->lastHourOfData('pressures');
-    }
-
-    public function humidity()
-    {
-        return $this->lastHourOfData('humidities');
-    }
-
-    public function lastHourOfData(string $table)
-    {
-        $data = DB::table($table);
-
-        if (config('api.live')) {
-            $data->where('created_at', '>=', Carbon::now()->subMinutes(10)->toDateTimeString());
-        }
-
-        return $this->downSample($data->get());
-    }
-
-    public function downSample(Collection $collection)
-    {
-        $downSamplePercent = 2;
-        $count = $collection->count();
-        if ($count > 100) {
-            $nth = ($downSamplePercent * .01) * $count;
-            return $collection->nth(round($nth));
-        } else {
-            return $collection;
-        }
-    }
-
     public function store(Request $request)
     {
         Log::info("Request: " . print_r($request->all(), true));
@@ -63,7 +23,7 @@ class WeatherMeasurement extends Controller
             'event_time' => 'required'
         ]);
 
-        Log::info("Request: " . print_r($data, true));
+        Log::info("Saving the following weather data: " . print_r($data, true));
 
         $event_time = Carbon::parse($data['event_time']);
 
