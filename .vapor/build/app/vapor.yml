@@ -1,0 +1,24 @@
+id: 10503
+name: weather-api
+environments:
+    production:
+        domain: api.derkweather.com
+        database: production
+        memory: 1024
+        cli-memory: 512
+        runtime: php-7.4
+        build:
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+            - 'php artisan event:cache'
+        deploy:
+            - 'php artisan migrate --force'
+    staging:
+        database: development
+        memory: 1024
+        cli-memory: 512
+        runtime: php-7.4
+        build:
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install'
+            - 'php artisan event:cache'
+        deploy:
+          - 'php artisan migrate --force'
