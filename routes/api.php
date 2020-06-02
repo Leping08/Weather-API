@@ -13,15 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* @see MeasurementController::store() */
+/* @see API::handle() */
 Route::middleware('api_token')->group(function () {
+    /* @see MeasurementController::store() */
     Route::post('/weather/{api_key}', 'MeasurementController@store')->name('measurement.store');
 });
 
-/* @see LiveDataController::index() */
+/* @see Domain::handle() */
 Route::middleware('domain')->group(function () {
+    /* @see LiveDataController::index() */
     Route::post('/live', 'LiveDataController@index')->name('live');
 
+    /* @see HistoricalDataController::index() */
     Route::post('/historical', 'HistoricalDataController@index')->name('history');
 });
 

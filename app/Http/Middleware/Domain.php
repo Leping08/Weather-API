@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Log;
 class Domain
 {
     protected $hosts = [
-        'https://derkweather.com',
-        'http://localhost:8080'
+        'derkweather.com',
+        'localhost:8080'
     ];
 
     /**
@@ -24,10 +24,10 @@ class Domain
     {
         if (App::environment('production')) {
             $hosts = collect($this->hosts);
-            if ($hosts->contains($request->get('HTTP_ORIGIN'))) {
+            if ($hosts->contains(parse_url($request->headers->get('origin'),  PHP_URL_HOST))) {
                 return $next($request);
             } else {
-                Log::info("Request blocked from the host: {$request->get('HTTP_ORIGIN')}");
+                Log::info("Request blocked from the host: " . parse_url($request->headers->get('origin'),  PHP_URL_HOST));
                 return response('Request is not from the correct domain.', 403);
             }
         } else {
