@@ -34,6 +34,7 @@ class HistoricalDataController extends Controller
 
         //Return the last hour of data
         return $model::where('measurement_time', '>=', Carbon::now()->$method()->toDateTimeString())
+            ->downsample(.5)
             ->get();
     }
 }
