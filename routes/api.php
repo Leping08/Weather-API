@@ -20,11 +20,11 @@ Route::middleware('api_token')->group(function () {
 });
 
 /* @see Domain::handle() */
-Route::middleware('domain')->group(function () {
+//Route::middleware('domain')->group(function () {
     /* @see LiveDataController::index() */
     Route::post('/live', 'LiveDataController@index')->name('live');
 
     /* @see HistoricalDataController::index() */
     Route::post('/historical', 'HistoricalDataController@index')->name('history');
-});
+//});
 
