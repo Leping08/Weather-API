@@ -4,11 +4,13 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 
 class Domain
 {
     protected $hosts = [
-        'derkweather.com'
+        'derkweather.com',
+        'localhost:8080'
     ];
 
     /**
@@ -25,6 +27,7 @@ class Domain
             if ($hosts->contains($request->getHost())) {
                 return $next($request);
             } else {
+                Log::info("Request blocked from the host: {$request->getHost()}");
                 return response('Request is not from the correct domain.', 403);
             }
         } else {
