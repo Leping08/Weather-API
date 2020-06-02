@@ -21,5 +21,7 @@ Route::middleware('api_token')->group(function () {
 /* @see LiveDataController::index() */
 Route::middleware('domain')->group(function () {
     Route::post('/live', 'LiveDataController@index')->name('live');
+
+    Route::post('/historical', 'HistoricalDataController@index')->name('history');
 });
 
