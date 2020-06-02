@@ -10,7 +10,7 @@ class Domain
 {
     protected $hosts = [
         'derkweather.com',
-        'localhost:8080'
+        'localhost'
     ];
 
     /**
