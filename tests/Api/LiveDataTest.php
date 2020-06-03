@@ -22,7 +22,12 @@ class LiveDataTest extends TestCase
 
         $new_data = factory(Pressure::class)->create();
 
-        $response = $this->post(route('live'), ['measurement' => 'pressure']);
+        $data = [
+            'measurement' => 'pressure',
+            'time_frame' => 'live'
+        ];
+
+        $response = $this->post(route('live'), $data);
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->millibars)
@@ -38,7 +43,12 @@ class LiveDataTest extends TestCase
 
         $new_data = factory(Temperature::class)->create();
 
-        $response = $this->post(route('live'), ['measurement' => 'temperature']);
+        $data = [
+            'measurement' => 'temperature',
+            'time_frame' => 'live'
+        ];
+
+        $response = $this->post(route('live'), $data);
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->degrees)
@@ -54,7 +64,12 @@ class LiveDataTest extends TestCase
 
         $new_data = factory(Humidity::class)->create();
 
-        $response = $this->post(route('live'), ['measurement' => 'humidity']);
+        $data = [
+            'measurement' => 'humidity',
+            'time_frame' => 'live'
+        ];
+
+        $response = $this->post(route('live'), $data);
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->percentage)

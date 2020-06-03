@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-class HistoricalDataController extends Controller
+class WeatherDataController extends Controller
 {
     public function index(Request $request)
     {
@@ -19,7 +19,7 @@ class HistoricalDataController extends Controller
             ],
             'time_frame' => [
                 'required',
-                Rule::in(['day', 'week', 'month', 'year'])
+                Rule::in(['live', 'day', 'week', 'month', 'year'])
             ]
         ]);
 
@@ -30,11 +30,22 @@ class HistoricalDataController extends Controller
         //Build the model ex: '\App\Pressure'
         $model = "\\App\\" . Str::title($request->get('measurement'));
 
-        $method = "sub" . Str::title($request->get('time_frame'));
+        //Set up the time frame of the db query
+        if ($request->get('time_frame') === 'live') {
+            $method = 'subHour';
+        } else {
+            $method = "sub" . Str::title($request->get('time_frame'));
+        }
 
-        //Return the last hour of data
-        return $model::where('measurement_time', '>=', Carbon::now()->$method()->toDateTimeString())
-            ->downsample(.5)
+        //Return the time frame of data
+        $data = $model::where('measurement_time', '>=', Carbon::now()->$method()->toDateTimeString())
             ->get();
+
+        //Downsample if the data count is over 500
+        if ($data->count() >= 500) {
+            return $data->downsamle(0.5);
+        } else {
+            return $data;
+        }
     }
 }
