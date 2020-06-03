@@ -43,7 +43,7 @@ class WeatherDataController extends Controller
 
         //Downsample if the data count is over 500
         if ($data->count() >= 500) {
-            return $data->downsamle(0.5);
+            return $data->downsample(0.5);
         } else {
             return $data;
         }

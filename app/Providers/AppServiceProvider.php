@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         Collection::macro('downsample', function ($percent) {
             if ($this->count() > 100) {
                 $nth = ($percent * .01) * $this->count();
