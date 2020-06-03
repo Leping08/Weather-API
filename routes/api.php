@@ -22,6 +22,6 @@ Route::middleware('api_token')->group(function () {
 /* @see Domain::handle() */
 Route::middleware('domain')->group(function () {
     /* @see WeatherDataController::index() */
-    Route::post('/weather-data', 'WeatherDataController@index')->name('live');
+    Route::get('/weather-data', 'WeatherDataController@index')->name('live');
 });
 
