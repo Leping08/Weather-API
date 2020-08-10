@@ -24,10 +24,11 @@ class LiveDataTest extends TestCase
 
         $data = [
             'measurement' => 'pressure',
-            'time_frame' => 'live'
+            'time_frame' => 'live',
+            'api_key' => env('API_KEY')
         ];
 
-        $response = $this->post(route('live'), $data);
+        $response = $this->get(route('live', $data));
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->millibars)
@@ -45,10 +46,11 @@ class LiveDataTest extends TestCase
 
         $data = [
             'measurement' => 'temperature',
-            'time_frame' => 'live'
+            'time_frame' => 'live',
+            'api_key' => env('API_KEY')
         ];
 
-        $response = $this->post(route('live'), $data);
+        $response = $this->get(route('live', $data));
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->degrees)
@@ -66,10 +68,11 @@ class LiveDataTest extends TestCase
 
         $data = [
             'measurement' => 'humidity',
-            'time_frame' => 'live'
+            'time_frame' => 'live',
+            'api_key' => env('API_KEY')
         ];
 
-        $response = $this->post(route('live'), $data);
+        $response = $this->get(route('live', $data));
 
         $response->assertStatus(200)
             ->assertDontSee($old_data->percentage)
