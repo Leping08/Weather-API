@@ -48,6 +48,12 @@ class WeatherDataController extends Controller
         $data = $model::where('measurement_time', '>=', Carbon::now()->$method()->toDateTimeString())
             ->get();
 
+        //Return the measurement time in est timezone
+        $data->transform(function ($item) {
+            $item->measurement_time = Carbon::parse($item->measurement_time)->setTimezone('America/New_York')->toDateTimeString();
+            return $item;
+        });
+
         //Downsample if the data count is over 500
         if ($data->count() >= 500) {
             return $data->downsample(0.5);
