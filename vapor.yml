@@ -6,6 +6,7 @@ environments:
         database: production
         timeout: 60
         memory: 1024
+        scheduler: false
         runtime: php-8.5:al2023
         build:
             - 'composer install --no-dev'
