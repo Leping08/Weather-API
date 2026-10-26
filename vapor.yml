@@ -6,7 +6,7 @@ environments:
         database: production
         timeout: 60
         memory: 1024
-        runtime: php-8.3:al2
+        runtime: php-8.5:al2023
         build:
             - 'composer install --no-dev'
             - 'php artisan event:cache'
@@ -16,7 +16,7 @@ environments:
         database: development
         timeout: 60
         memory: 1024
-        runtime: php-8.3:al2
+        runtime: php-8.5:al2023
         build:
             - 'composer install --no-dev'
             - 'php artisan event:cache'
